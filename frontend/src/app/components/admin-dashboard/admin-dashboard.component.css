@@ -1,0 +1,121 @@
+/* NAVIGATION BAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e2938; /* Dark Gray */
+  padding: 10px 20px;
+  color: white;
+}
+
+/* Left side: logo + title */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 80px; /* smaller logo for navbar */
+  margin-right: 12px;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Right side (logout button) */
+.logout-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* CONTROLS SECTION */
+.controls {
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+}
+
+.control-btn {
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.control-btn:hover {
+  background-color: #2563eb;
+}
+
+/* GRID LAYOUT */
+.animal-grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  justify-items: center; /* centers cards in their grid cells */
+}
+
+/* CARD STYLING */
+.animal-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  max-width: 260px;
+}
+
+/* CARD IMAGE */
+.animal-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* TEXT STYLES */
+.animal-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 10px 4px 10px;
+}
+
+.animal-species,
+.animal-status,
+.animal-reserved {
+  margin: 3px 10px;
+  color: #555;
+}
+
+/* EDIT BUTTON */
+.edit-btn {
+  margin: 12px auto 12px auto;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #2563eb;
+}

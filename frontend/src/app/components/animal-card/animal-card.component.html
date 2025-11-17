@@ -1,0 +1,18 @@
+ 
+  
+
+  <div class="animal-card">
+    
+    <img 
+      [src]="'images/' + animal.image" 
+      alt="{{ animal.name }}"
+      class="animal-image"
+    />
+
+    <h3 class="animal-name">{{ animal.name }}</h3>
+    <p class="animal-species">Species: {{ animal.species }}</p>
+    <p class="animal-status">Training: {{ animal.trainingStatus }}</p>
+    <p class="animal-reserved">Reserved: {{ animal.reserved ? 'Yes' : 'No' }}</p>
+
+    <button class="edit-btn">Edit</button>
+  </div>

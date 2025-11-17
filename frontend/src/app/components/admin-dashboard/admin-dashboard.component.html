@@ -1,0 +1,31 @@
+<!-- Top Navigation Bar -->
+<nav class="navbar">
+
+
+  <div class="navbar-left">
+     <img src="images/Logo.png" alt="Logo" class="navbar-logo" />
+  
+  </div>
+
+   <div class="navbar-right">
+    <button class="logout-btn">Logout</button>
+  </div>
+</nav>
+
+<!-- Controls Section -->
+<section class="controls">
+  <button class="control-btn">Add Animal</button>
+  <button class="control-btn">Filter</button>
+  <button class="control-btn">Sort</button>
+  
+</section>
+
+<!-- Cards Grid Section -->
+<section class="animal-grid">
+
+  <app-animal-card 
+    *ngFor="let animal of animals"
+    [animal]="animal">
+  </app-animal-card>
+
+</section>

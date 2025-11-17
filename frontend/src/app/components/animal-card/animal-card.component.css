@@ -1,0 +1,34 @@
+.animal-card {
+  width: 260px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animal-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.animal-details {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.edit-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
