@@ -14,9 +14,9 @@
 
 <!-- Controls Section -->
 <section class="controls">
-  <button class="control-btn">Add Animal</button>
-  <button class="control-btn">Filter</button>
-  <button class="control-btn">Sort</button>
+  <button class="control-btn" (click)="openAddAnimal()">Add Animal</button> <!--added the functionality to call addanimal on button click-->
+  <button class="control-btn" (click)="showFilterSortModal = true">Filter and Sort</button>
+  
   
 </section>
 
@@ -24,8 +24,43 @@
 <section class="animal-grid">
 
   <app-animal-card 
-    *ngFor="let animal of animals"
-    [animal]="animal">
+    *ngFor="let animal of displayedAnimals"
+    [animal]="animal"
+    (edit)="openEditAnimal($event)"
+    (delete)="openDeleteConfirm(animal)">
   </app-animal-card>
 
 </section>
+
+<!-- Add Animal Form -->
+<app-add-animal 
+    *ngIf="showAddForm"
+    (close)="showAddForm = false"
+    (addAnimal)="addAnimalToList($event)">
+</app-add-animal>
+
+
+<!-- Edit Animal Form -->
+<app-edit-animal
+    *ngIf="showEditForm"
+    [animal]="selectedAnimal"
+  
+    (close)="showEditForm = false"
+    (updated)="onAnimalUpdated($event)">
+</app-edit-animal>
+
+
+<!-- Delete Animal form-->
+<app-delete-animal
+  *ngIf="showDeleteModal"
+  [animal]="animalToDelete"
+  (confirm)="confirmDelete()"
+  (cancel)="cancelDelete()">
+</app-delete-animal>
+
+<!-- Filter + Sort form -->
+<app-filter-sort
+  *ngIf="showFilterSortModal"
+  (close)="showFilterSortModal = false"
+  (apply)="applyFilterSort($event)">
+</app-filter-sort>

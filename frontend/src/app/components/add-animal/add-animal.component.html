@@ -1,0 +1,62 @@
+<div class="modal-background">
+  <div class="modal-container">
+
+    <h2>Add New Animal</h2>
+
+    <form (ngSubmit)="submitForm()" #animalForm="ngForm">
+
+      <!-- Name -->
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="animal.name" name="name" required />
+
+      <!-- Species Dropdown -->
+      <label>Species:</label>
+      <select [(ngModel)]="animal.species" name="species" required>
+        <option value="Dog">Dog</option>
+        <option value="Monkey">Monkey</option>
+      </select>
+
+      <!-- Gender -->
+      <label>Gender:</label>
+      <select [(ngModel)]="animal.gender" name="gender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <!-- Age -->
+      <label>Age:</label>
+      <input type="number" [(ngModel)]="animal.age" name="age" required />
+
+      <!-- Training Status -->
+      <label>Training Status:</label>
+      <select [(ngModel)]="animal.trainingStatus" name="trainingStatus">
+        <option value="Intake">Intake</option>
+        <option value="In Training">In Training</option>
+        <option value="Ready for Service">Ready for Service</option>
+         <option value="In Service">In Service</option>
+      </select>
+
+      <!-- Reserved -->
+      <label>Reserved:</label>
+      <select [(ngModel)]="animal.reserved" name="reserved">
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+
+      <!-- country-->
+       <label>In Service Country:</label>
+      <input type="text" [(ngModel)]="animal.inServiceCountry" name="inServiceCountry" required />
+
+      <!-- Image upload -->
+      <label>Image:</label>
+      <input type="file" (change)="onImageSelected($event)" />
+
+      <!-- Buttons -->
+      <div class="button-row">
+        <button type="submit" class="save-btn">Save</button>
+        <button type="button" class="cancel-btn" (click)="closeForm()">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>

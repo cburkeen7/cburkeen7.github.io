@@ -66,7 +66,7 @@
 .animal-grid {
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, 260px);
   gap: 20px;
   justify-items: center; /* centers cards in their grid cells */
 }
@@ -119,3 +119,16 @@
 .edit-btn:hover {
   background-color: #2563eb;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

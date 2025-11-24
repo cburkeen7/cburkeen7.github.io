@@ -14,5 +14,6 @@
     <p class="animal-status">Training: {{ animal.trainingStatus }}</p>
     <p class="animal-reserved">Reserved: {{ animal.reserved ? 'Yes' : 'No' }}</p>
 
-    <button class="edit-btn">Edit</button>
+    <button class="edit-btn" (click)="onEditClick()">Edit</button>
+    <button class="delete-btn" (click)="delete.emit(animal)">Delete</button>
   </div>

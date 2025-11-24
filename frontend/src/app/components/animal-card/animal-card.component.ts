@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Animal } from '../../models/animal.model';
 
@@ -11,4 +11,13 @@ import { Animal } from '../../models/animal.model';
 })
 export class AnimalCardComponent {
   @Input() animal!: Animal;
+  @Output() edit = new EventEmitter<Animal>();
+  @Output() delete = new EventEmitter<Animal>(); 
+
+onDeleteClick() {
+  this.delete.emit(this.animal);
+}
+  onEditClick() {
+    this.edit.emit(this.animal);
+  }
 }

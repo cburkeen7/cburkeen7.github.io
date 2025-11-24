@@ -1,0 +1,11 @@
+<div class="modal-overlay">
+  <div class="modal-box">
+    <h3>Delete {{ animal?.name }}?</h3>
+    <p>This action cannot be undone.</p>
+
+    <div class="modal-actions">
+      <button class="delete-btn" (click)="onConfirm()">Delete</button>
+      <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</div>
