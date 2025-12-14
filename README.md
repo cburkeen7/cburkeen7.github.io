@@ -11,7 +11,7 @@ My coursework in data structures and algorithms strengthened my problem-solving 
 
 Through projects focused on software engineering and databases, I developed full-stack applications that integrated backend APIs, frontend user interfaces, and persistent data storage. For example, integrating MongoDB with Node.js taught me how real-world systems manage and retrieve data efficiently, while Angular development enhanced my ability to create responsive, interactive user interfaces. These experiences directly support my goal of becoming a full-stack developer by teaching me how to design and implement complete, production-style applications.
 
-Security was another critical area of growth throughout the program. I learned the importance of protecting user data by applying secure coding practices such as password hashing and salting, validating user input, and securing API endpoints. These practices reinforced my understanding of ethical computing and protecting the users information is the responsibility of the developer. 
+Security was another critical area of growth throughout the program. I learned the importance of protecting user data by applying secure coding practices such as password hashing and salting, validating user input, securing API endpoints, and using JSON Web tokens for authentication and authorization. These practices reinforced my understanding of ethical computing and protecting the users information is the responsibility of the developer. 
 
 My artifact, the Grazioso Salvare Rescue Animal Management System, showcases the full range of my computer science abilities. Each enhancement made to this application demonstrates a different aspect of my technical skill set, including API design, authentication, database integration, and frontend development. The artifact reflects the growth from a simple console-based application to a fully functional web-based system that uses industry-aligned technologies and best practices.
 
@@ -59,7 +59,7 @@ I was able to successfully meet the course outcomes I targeted. I was able to me
 
 Enhancing this artifact taught me several important lessons. I learned how important it is to structure backend logic cleanly when dealing with asynchronous operations and error handling in Node.js. I also gained experience debugging common issues such as missing routes, invalid request bodies, and database connection problems. One of the main challenges I encountered was restructuring the Angular components by removing all array-based logic I used for the original program and converting them observable HTTP requests to the backend. 
 
-### [Link to Enhancement Three](https://github.com/cburkeen7/cburkeen7.github.io/tree/enhancement2)
+### [Link to Enhancement Three](https://github.com/cburkeen7/cburkeen7.github.io/tree/enhancement3)
 
 
 
