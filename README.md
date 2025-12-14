@@ -18,7 +18,7 @@ My artifact, the Grazioso Salvare Rescue Animal Management System, showcases the
 The artifacts in my ePortfolio demonstrate how my experiences in algorithms, software engineering, databases, web development, and security come together to form complete, real-world computing solutions. The portfolio highlights my  technical skills and my ability to integrate those skills into maintainable, scalable, and secure applications. This shows that I am prepared to enter the computer science field and contribute effectively in a professional software development role.
 
 # Original Project and Code Review
-
+[Click Here ](https://github.com/cburkeen7/cburkeen7.github.io/tree/originalArtifact) to see my original Grazioso Salvare Rescue Animal Project
 [Click Here ](https://youtu.be/sC3NzngPiMg) to watch my code review of my original Grazioso Salvare console app.
 
 # Enhancement One: Software Engineering and Design
