@@ -1,3 +1,5 @@
+theme: jekyll-theme-midnight
+
 # CS-499 ePortfolio 
 # Introduction
 My name is Cole Burkeen. I have been in the SNHU computer science program for 2.5 years. While in the program, three important skills I have learned are how to apply object-oriented programming principles, build and secure full-stack web applications, and how to follow the software development lifecycle using agile practices. 
