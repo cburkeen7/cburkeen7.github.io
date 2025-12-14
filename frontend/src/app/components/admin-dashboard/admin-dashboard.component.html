@@ -1,66 +1,56 @@
 <!-- Top Navigation Bar -->
 <nav class="navbar">
-
-
   <div class="navbar-left">
-     <img src="images/Logo.png" alt="Logo" class="navbar-logo" />
-  
+    <img src="images/Logo.png" alt="Logo" class="navbar-logo" />
   </div>
 
-   <div class="navbar-right">
-    <button class="logout-btn">Logout</button>
+  <div class="navbar-right">
+    <button class="logout-btn" (click)="logout()">Logout </button>
   </div>
 </nav>
 
 <!-- Controls Section -->
 <section class="controls">
-  <button class="control-btn" (click)="openAddAnimal()">Add Animal</button> <!--added the functionality to call addanimal on button click-->
-  <button class="control-btn" (click)="showFilterSortModal = true">Filter and Sort</button>
-  
-  
+  <button class="control-btn" (click)="openAddAnimal()">Add Animal</button>
+  <button class="control-btn" (click)="showFilterSortModal = true">Filter & Sort</button>
 </section>
 
 <!-- Cards Grid Section -->
 <section class="animal-grid">
-
-  <app-animal-card 
+  <app-animal-card
     *ngFor="let animal of displayedAnimals"
     [animal]="animal"
-    (edit)="openEditAnimal($event)"
-    (delete)="openDeleteConfirm(animal)">
-  </app-animal-card>
-
+    (edit)="openEditAnimal(animal)"
+    (delete)="openDeleteConfirm(animal)"
+  ></app-animal-card>
 </section>
 
-<!-- Add Animal Form -->
-<app-add-animal 
-    *ngIf="showAddForm"
-    (close)="showAddForm = false"
-    (addAnimal)="addAnimalToList($event)">
-</app-add-animal>
+<!-- Add Animal Modal -->
+<app-add-animal
+  *ngIf="showAddForm"
+  (cancel)="showAddForm = false"
+  (add)="addAnimalToList($event)"
+></app-add-animal>
 
-
-<!-- Edit Animal Form -->
+<!-- Edit Animal Modal -->
 <app-edit-animal
-    *ngIf="showEditForm"
-    [animal]="selectedAnimal"
-  
-    (close)="showEditForm = false"
-    (updated)="onAnimalUpdated($event)">
-</app-edit-animal>
+  *ngIf="showEditForm"
+  [animal]="selectedAnimal"
+  (updated)="onAnimalUpdated($event)"
+  (close)="showEditForm = false"
+></app-edit-animal>
 
-
-<!-- Delete Animal form-->
+<!-- Delete Modal -->
 <app-delete-animal
   *ngIf="showDeleteModal"
   [animal]="animalToDelete"
   (confirm)="confirmDelete()"
-  (cancel)="cancelDelete()">
-</app-delete-animal>
+  (cancel)="cancelDelete()"
+></app-delete-animal>
 
-<!-- Filter + Sort form -->
+<!-- Filter/Sort Modal -->
 <app-filter-sort
   *ngIf="showFilterSortModal"
+  (apply)="applyFilterSort($event)"
   (close)="showFilterSortModal = false"
-  (apply)="applyFilterSort($event)">
-</app-filter-sort>
+></app-filter-sort>

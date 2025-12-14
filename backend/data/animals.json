@@ -1,0 +1,26 @@
+[
+  {
+    
+    "name": "Rex",
+    "species": "Dog",
+    "gender": "Male",
+    "age": 4,
+    "weight": "25kg",
+    "trainingStatus": "Intake",
+    "reserved": false,
+    "inServiceCountry": "USA",
+    "image": "dog1.jpg"
+  },
+  {
+   
+    "name": "Luna",
+    "species": "Monkey",
+    "gender": "Female",
+    "age": 6,
+    "weight": "10kg",
+    "trainingStatus": "In Service",
+    "reserved": true,
+    "inServiceCountry": "Canada",
+    "image": "monkey1.jpg"
+  }
+]

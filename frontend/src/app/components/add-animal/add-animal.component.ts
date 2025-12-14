@@ -1,42 +1,60 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Animal } from '../../models/animal.model';
+import { AnimalService } from '../../services/animal.service';
+
 @Component({
   selector: 'app-add-animal',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-animal.component.html',
-  styleUrl:'./add-animal.component.css'
+  styleUrls: ['./add-animal.component.css']
 })
-export class AddAnimal{
+export class AddAnimal {
+  @Output() cancel = new EventEmitter<void>();
+  @Output() add = new EventEmitter<Animal>();
 
-  @Output() close = new EventEmitter<void>();
-  @Output() addAnimal = new EventEmitter<any>();
-
-  animal = {
+  newAnimal: Omit<Animal, '_id'> = {
     name: '',
     species: '',
     gender: '',
-    age: null,
+    age: 0,
+    weight: '',
     trainingStatus: '',
-
     reserved: false,
     inServiceCountry: '',
     image: ''
   };
 
-  selectedImageFile: File | null = null;
+  constructor(private animalService: AnimalService) {}
 
-  onImageSelected(event: any) {
-    this.selectedImageFile = event.target.files[0];
-    this.animal.image = this.selectedImageFile?.name ?? '';
-  }
-
-  submitForm() {
-    this.addAnimal.emit(this.animal);
-    this.close.emit();
+  saveAnimal() {
+    // Call backend to save the new animal
+    this.animalService.addAnimal(this.newAnimal).subscribe({
+      next: (createdAnimal) => {
+        // Emit the saved animal with _id
+        this.add.emit(createdAnimal);
+        // Reset form
+        this.newAnimal = {
+          name: '',
+          species: '',
+          gender: '',
+          age: 0,
+          weight: '',
+          trainingStatus: '',
+          reserved: false,
+          inServiceCountry: '',
+          image: ''
+        };
+      },
+      error: (err) => {
+        console.error('Error adding animal:', err);
+      }
+    });
   }
 
   closeForm() {
-    this.close.emit();
+    this.cancel.emit();
   }
 }

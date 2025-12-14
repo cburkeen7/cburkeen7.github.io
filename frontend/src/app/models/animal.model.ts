@@ -1,5 +1,5 @@
 export interface Animal {
-  id: number;
+  _id?: string;           // MongoDB ObjectId as string, optional for new animals
   name: string;
   species: string;
   gender: string;
@@ -8,5 +8,5 @@ export interface Animal {
   trainingStatus: string;
   reserved: boolean;
   inServiceCountry: string;
-  image?: string;
+  image?: string;         // optional, since some animals might not have an image yet
 }

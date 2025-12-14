@@ -1,62 +1,47 @@
 <div class="modal-background">
   <div class="modal-container">
-
     <h2>Add New Animal</h2>
 
-    <form (ngSubmit)="submitForm()" #animalForm="ngForm">
+    <label>Name</label>
+    <input [(ngModel)]="newAnimal.name" />
 
-      <!-- Name -->
-      <label>Name:</label>
-      <input type="text" [(ngModel)]="animal.name" name="name" required />
+    <label>Species</label>
+    <input [(ngModel)]="newAnimal.species" />
 
-      <!-- Species Dropdown -->
-      <label>Species:</label>
-      <select [(ngModel)]="animal.species" name="species" required>
-        <option value="Dog">Dog</option>
-        <option value="Monkey">Monkey</option>
-      </select>
+    <label>Gender</label>
+    <select [(ngModel)]="newAnimal.gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
 
-      <!-- Gender -->
-      <label>Gender:</label>
-      <select [(ngModel)]="animal.gender" name="gender" required>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
+    <label>Age</label>
+    <input type="number" [(ngModel)]="newAnimal.age" />
 
-      <!-- Age -->
-      <label>Age:</label>
-      <input type="number" [(ngModel)]="animal.age" name="age" required />
+    <label>Weight</label>
+    <input [(ngModel)]="newAnimal.weight" />
 
-      <!-- Training Status -->
-      <label>Training Status:</label>
-      <select [(ngModel)]="animal.trainingStatus" name="trainingStatus">
-        <option value="Intake">Intake</option>
-        <option value="In Training">In Training</option>
-        <option value="Ready for Service">Ready for Service</option>
-         <option value="In Service">In Service</option>
-      </select>
+    <label>Training Status</label>
+    <select [(ngModel)]="newAnimal.trainingStatus">
+      <option value="Intake">Intake</option>
+      <option value="In Training">In Training</option>
+      <option value="Ready for Service">Ready for Service</option>
+    </select>
 
-      <!-- Reserved -->
-      <label>Reserved:</label>
-      <select [(ngModel)]="animal.reserved" name="reserved">
-        <option [ngValue]="true">Yes</option>
-        <option [ngValue]="false">No</option>
-      </select>
+    <label>Reserved?</label>
+    <select [(ngModel)]="newAnimal.reserved">
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
+    </select>
 
-      <!-- country-->
-       <label>In Service Country:</label>
-      <input type="text" [(ngModel)]="animal.inServiceCountry" name="inServiceCountry" required />
+    <label>In Service Country</label>
+    <input [(ngModel)]="newAnimal.inServiceCountry" />
 
-      <!-- Image upload -->
-      <label>Image:</label>
-      <input type="file" (change)="onImageSelected($event)" />
+    <label>Image</label>
+    <input [(ngModel)]="newAnimal.image" />
 
-      <!-- Buttons -->
-      <div class="button-row">
-        <button type="submit" class="save-btn">Save</button>
-        <button type="button" class="cancel-btn" (click)="closeForm()">Cancel</button>
-      </div>
-
-    </form>
+    <div class="button-row">
+      <button class="save-btn" (click)="saveAnimal()">Save</button>
+      <button class="cancel-btn" (click)="closeForm()">Cancel</button>
+    </div>
   </div>
 </div>

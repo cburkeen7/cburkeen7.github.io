@@ -1,30 +1,117 @@
-const Animal = require('../models/animal');
+const mongoose = require('mongoose');
+require('../models/animal'); // Register Animal schema
 
-// Temporary in-memory data
-let animals = [
-  new Animal(1, 'Rex', 'Dog', 'Male', 4, '25kg', 'Intake', false, 'USA'),
-  new Animal(2, 'Luna', 'Monkey', 'Female', 6, '10kg', 'In Service', true, 'Canada')
-];
+const Animal = mongoose.model('animals');
 
-// GET all animals
-const getAnimals = (req, res) => res.json(animals);
-
-// POST add new animal
-// this function adds a new animal to the array of animals. 
-const addAnimal = (req, res) => {
-  const newAnimal = new Animal(
-    animals.length + 1,
-    req.body.name,
-    req.body.species,
-    req.body.gender,
-    req.body.age,
-    req.body.weight,
-    req.body.trainingStatus,
-    req.body.reserved,
-    req.body.inServiceCountry
-  );
-  animals.push(newAnimal);  // add the new animal to the array
-  res.status(201).json(newAnimal); 
+// -----------------------------
+//   GET All Animals
+// -----------------------------
+const animalList = async (req, res) => {
+  try {
+    const animals = await Animal.find({});
+    if (!animals || animals.length === 0) {
+      return res.status(404).json({ message: 'No animals found' });
+    }
+    res.status(200).json(animals);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err });
+  }
 };
 
-module.exports = { getAnimals, addAnimal };
+// -----------------------------
+//   GET Single Animal by ID
+// -----------------------------
+const animalFindById = async (req, res) => {
+  try {
+    const animal = await Animal.findById(req.params.animalId);
+    if (!animal) {
+      return res.status(404).json({ message: 'Animal not found' });
+    }
+    res.status(200).json(animal);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err });
+  }
+};
+
+// -----------------------------
+//   POST Create New Animal
+// -----------------------------
+const animalCreate = async (req, res) => {
+  try {
+    const animal = await Animal.create({
+      name: req.body.name,
+      species: req.body.species,
+      gender: req.body.gender,
+      age: req.body.age,
+      weight: req.body.weight,
+      trainingStatus: req.body.trainingStatus,
+      reserved: req.body.reserved,
+      inServiceCountry: req.body.inServiceCountry,
+      image: req.body.image
+    });
+    res.status(201).json(animal);
+  } catch (err) {
+    res.status(400).json({ message: 'Error creating animal', error: err });
+  }
+};
+
+// -----------------------------
+//   PUT Update Animal
+// -----------------------------
+const animalUpdate = async (req, res) => {
+  try {
+    const animal = await Animal.findByIdAndUpdate(
+      req.params.animalId,
+      {
+        name: req.body.name,
+        species: req.body.species,
+        gender: req.body.gender,
+        age: req.body.age,
+        weight: req.body.weight,
+        trainingStatus: req.body.trainingStatus,
+        reserved: req.body.reserved,
+        inServiceCountry: req.body.inServiceCountry,
+        image: req.body.image
+      },
+      { new: true }
+    );
+    if (!animal) {
+      return res.status(404).json({ message: 'Animal not found' });
+    }
+    res.status(200).json(animal);
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating animal', error: err });
+  }
+};
+
+const animalDelete = async (req, res) => {
+  try {
+    const { animalId } = req.params;
+
+
+    if (!mongoose.Types.ObjectId.isValid(animalId)) {
+      return res.status(400).json({ message: 'Invalid animal ID' });
+    }
+
+    const animal = await Animal.findByIdAndDelete(animalId);
+
+    if (!animal) {
+      return res.status(404).json({ message: 'Animal not found' });
+    }
+
+    res.status(200).json({
+      message: 'Animal deleted successfully',
+      id: animalId
+    });
+  } catch (err) {
+    console.error('Delete error:', err);
+    res.status(500).json({ message: 'Server error deleting animal' });
+  }
+};
+module.exports = {
+  animalList,
+  animalFindById,
+  animalCreate,
+  animalUpdate,
+  animalDelete
+};

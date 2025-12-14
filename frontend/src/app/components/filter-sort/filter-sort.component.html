@@ -1,50 +1,35 @@
-<div class="modal">
-  <div class="modal-content">
-
-    <h2>Filter & Sort Animals</h2>
-
-    <!-- FILTERS -->
-    <h3>Filters</h3>
+<div class="modal-background">
+  <div class="modal-container">
+    <h2>Filter & Sort</h2>
 
     <label>Species</label>
-    <select [(ngModel)]="filters.species">
-      <option value="">Any</option>
-      <option value="Dog">Dog</option>
-      <option value="Monkey">Monkey</option>
-    </select>
+    <input [(ngModel)]="filters.species" placeholder="Dog, Monkey, etc." />
 
     <label>Training Status</label>
     <select [(ngModel)]="filters.trainingStatus">
       <option value="">Any</option>
       <option value="Intake">Intake</option>
-      <option value="In Service">In Service</option>
       <option value="In Training">In Training</option>
       <option value="Ready for Service">Ready for Service</option>
     </select>
 
-    <label>Reserved</label>
+    <label>Reserved?</label>
     <select [(ngModel)]="filters.reserved">
       <option value="">Any</option>
       <option value="true">Reserved</option>
-      <option value="false">Available</option>
+      <option value="false">Not Reserved</option>
     </select>
 
-    <hr />
-
-    <!-- SORT -->
-    <h3>Sort By</h3>
-
+    <label>Sort By</label>
     <select [(ngModel)]="sortOption">
       <option value="">None</option>
-      <option value="training">Training Status</option>
-      <option value="reserved">Reserved</option>
       <option value="age">Age</option>
+      <option value="name">Name</option>
     </select>
 
-    <div class="actions">
+    <div class="button-row">
       <button class="save-btn" (click)="save()">Apply</button>
       <button class="cancel-btn" (click)="cancel()">Cancel</button>
     </div>
-
   </div>
 </div>

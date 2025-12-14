@@ -1,39 +1,23 @@
-/* ===== Modal Overlay ===== */
-.modal-overlay {
+.modal-background {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.55);
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: 9999; 
 }
 
-/* ===== Modal Window ===== */
-.modal {
-  background: #ffffff;
-  width: 420px;
-  max-width: 90%;
-  padding: 25px 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  animation: fadeIn 0.25s ease-out;
-  display: flex;
-  flex-direction: column;
-}
+.modal-container {
+  background: #fff;
+  width: 400px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ===== Modal Title ===== */

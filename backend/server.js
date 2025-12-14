@@ -1,13 +1,15 @@
 const express = require('express');
-const cors = require('cors');
-const animalRoutes = require('./routes/animals');
-
 const app = express();
+const cors = require('cors');
+require('./models/db'); // Database connection
+const { register, login } = require('./controllers/authentication');
+
 app.use(cors());
 app.use(express.json());
 
-// Base route
-app.use('/api/animals', animalRoutes);
+app.post('/rescueAnimal/register', register);
+app.post('/rescueAnimal/login', login);
 
-const PORT = 3000;  // this is the port where the server will listen 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use('/rescueAnimal', require('./routes/rescueAnimal'));
+
+app.listen(3000, () => console.log('Server running on port 3000'));

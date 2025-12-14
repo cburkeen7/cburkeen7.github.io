@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
-import { Animal } from '../../models/animal.model';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Animal } from '../../models/animal.model';
+import { AnimalService } from '../../services/animal.service';
+
 import { AnimalCardComponent } from '../animal-card/animal-card.component';
 import { AddAnimal } from '../add-animal/add-animal.component';
 import { EditAnimal } from '../edit-animal/edit-animal.component';
@@ -9,92 +13,134 @@ import { DeleteAnimal } from '../delete-animal/delete-animal.component';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [CommonModule, AnimalCardComponent, AddAnimal, EditAnimal, FilterSort, DeleteAnimal],
+  standalone: true,
+  imports: [
+    CommonModule,
+    AnimalCardComponent,
+    AddAnimal,
+    EditAnimal,
+    FilterSort,
+    DeleteAnimal
+  ],
   templateUrl: './admin-dashboard.component.html',
-  styleUrl: './admin-dashboard.component.css',
+  styleUrls: ['./admin-dashboard.component.css'],
 })
-export class AdminDashboard {
-  // Master array of all animals
-  animals: Animal[] = [
-    {
-      id: 1,
-      name: 'Rex',
-      species: 'Dog',
-      gender: 'Male',
-      age: 4,
-      weight: '25kg',
-      trainingStatus: 'Intake',
-      reserved: false,
-      inServiceCountry: 'USA',
-      image: 'dog1.jpg'
-    },
-    {
-      id: 2,
-      name: 'Luna',
-      species: 'Monkey',
-      gender: 'Female',
-      age: 6,
-      weight: '10kg',
-      trainingStatus: 'In Service',
-      reserved: true,
-      inServiceCountry: 'Canada',
-      image: 'monkey1.jpg'
-    }
-  ];
+export class AdminDashboard implements OnInit {
 
-  // Displayed array for UI (filtered/sorted)
-  displayedAnimals: Animal[] = [...this.animals];
+  animals: Animal[] = [];            // Master list from DB
+  displayedAnimals: Animal[] = [];   // Filtered/sorted list
 
-  // Add Animal form logic
   showAddForm = false;
+  showEditForm = false;
+  showDeleteModal = false;
+  showFilterSortModal = false;
+
+  selectedAnimal!: Animal;
+  animalToDelete: Animal | null = null;
+
+  constructor(private animalService: AnimalService,  private router: Router,
+  private authService: AuthenticationService) {}
+
+  ngOnInit() {
+    this.loadAnimals();
+  }
+ 
+  logout(): void {
+  this.authService.logout();
+  this.router.navigate(['/login']);
+}
+
+  // -----------------------------
+  // LOAD animals from backend
+  // -----------------------------
+  loadAnimals() {
+    this.animalService.getAnimals().subscribe({
+      next: (data) => {
+        this.animals = data;
+        this.displayedAnimals = [...this.animals];
+      },
+      error: (err) => console.error('Error loading animals:', err)
+    });
+  }
+
+  // -----------------------------
+  // ADD ANIMAL
+  // -----------------------------
   openAddAnimal() {
     this.showAddForm = true;
   }
-  addAnimalToList(newAnimal: Animal) {
-    this.animals.push(newAnimal);              // add to master list
-    this.displayedAnimals = [...this.animals]; // update displayed list
+
+  addAnimalToList(createdAnimal: Animal) {
+    this.animals.push(createdAnimal);
+    this.displayedAnimals = [...this.animals];
+    this.showAddForm = false;
   }
 
-  // Edit Animal form logic
-  showEditForm = false;
-  selectedAnimal!: Animal;
+  // -----------------------------
+  // EDIT ANIMAL
+  // -----------------------------
   openEditAnimal(animal: Animal) {
-    this.selectedAnimal = { ...animal }; // clone to avoid immediate UI changes
+    this.selectedAnimal = { ...animal };
     this.showEditForm = true;
   }
+
   onAnimalUpdated(updatedAnimal: Animal) {
-    const index = this.animals.findIndex(a => a.id === updatedAnimal.id);
-    if (index !== -1) {
-      this.animals[index] = updatedAnimal;          // update master
-      this.displayedAnimals = [...this.animals];    // update displayed
+    if (!updatedAnimal._id) {
+      console.error('Cannot update animal without _id');
+      return;
     }
-    this.showEditForm = false;
+
+    this.animalService.updateAnimal(updatedAnimal._id, updatedAnimal).subscribe({
+      next: (savedAnimal) => {
+        const index = this.animals.findIndex(a => a._id === savedAnimal._id);
+        if (index !== -1) this.animals[index] = savedAnimal;
+
+        this.displayedAnimals = [...this.animals];
+        this.showEditForm = false;
+        console.log('Animal updated successfully:', savedAnimal);
+      },
+      error: (err) => console.error('Error updating animal:', err)
+    });
   }
 
-  // Delete Animal logic
-  showDeleteModal = false;
-  animalToDelete: any = null;
+  // -----------------------------
+  // DELETE ANIMAL
+  // -----------------------------
   openDeleteConfirm(animal: Animal) {
     this.animalToDelete = animal;
     this.showDeleteModal = true;
   }
+
   cancelDelete() {
     this.showDeleteModal = false;
     this.animalToDelete = null;
   }
+
   confirmDelete() {
-    this.animals = this.animals.filter(a => a.id !== this.animalToDelete.id); // master
-    this.displayedAnimals = [...this.animals]; // update displayed
-    this.showDeleteModal = false;
-    this.animalToDelete = null;
+    if (!this.animalToDelete?._id) return;
+
+    this.animalService.deleteAnimal(this.animalToDelete._id).subscribe({
+      next: () => {
+        this.animals = this.animals.filter(a => a._id !== this.animalToDelete!._id);
+        this.displayedAnimals = [...this.animals];
+        this.showDeleteModal = false;
+        this.animalToDelete = null;
+        console.log('Animal deleted successfully');
+      },
+      error: (err) => console.error('Error deleting animal:', err)
+    });
   }
 
-  // Filter + Sort logic
-  showFilterSortModal = false;
+  // -----------------------------
+  // FILTER + SORT
+  // -----------------------------
+  openFilterSort() {
+    this.showFilterSortModal = true;
+  }
+
   applyFilterSort(event: any) {
     const { filters, sort } = event;
 
-    // Start with full master array
     let result = [...this.animals];
 
     // FILTER
@@ -105,17 +151,10 @@ export class AdminDashboard {
     });
 
     // SORT
-    if (sort === 'training') {
-      result.sort((a, b) => a.trainingStatus.localeCompare(b.trainingStatus));
-    }
-    if (sort === 'reserved') {
-      result.sort((a, b) => Number(a.reserved) - Number(b.reserved));
-    }
-    if (sort === 'age') {
-      result.sort((a, b) => a.age - b.age);
-    }
+    if (sort === 'training') result.sort((a, b) => a.trainingStatus.localeCompare(b.trainingStatus));
+    if (sort === 'reserved') result.sort((a, b) => Number(a.reserved) - Number(b.reserved));
+    if (sort === 'age') result.sort((a, b) => a.age - b.age);
 
-    // Update displayed array
     this.displayedAnimals = result;
   }
 }

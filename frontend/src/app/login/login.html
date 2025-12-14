@@ -1,0 +1,26 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="images/Logo.png" alt="Logo" />
+    </div>
+<!-- Error message -->
+<div class="error-message" *ngIf="formError">
+  {{ formError }}
+</div>
+
+<!-- Login Form -->
+<form (ngSubmit)="onLoginSubmit()">
+  <label for="name">Name</label>
+  <input id="name" type="text" [(ngModel)]="credentials.name" name="name" required />
+
+  <label for="email">Email</label>
+  <input id="email" type="email" [(ngModel)]="credentials.email" name="email" required />
+
+  <label for="password">Password</label>
+  <input id="password" type="password" [(ngModel)]="credentials.password" name="password" required />
+
+  <button type="submit" (click)="onLoginSubmit">Login</button>
+</form>
+  </div>
+</div>

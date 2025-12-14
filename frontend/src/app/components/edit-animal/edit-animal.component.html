@@ -1,44 +1,47 @@
-<div class="modal-overlay">
-  <div class="modal">
-
+<div class="modal-background">
+  <div class="modal-container">
     <h2>Edit Animal</h2>
 
-    <form (ngSubmit)="saveChanges()">
+    <label>Name</label>
+    <input [(ngModel)]="formAnimal.name" />
 
-      <label>Name</label>
-      <input type="text" [(ngModel)]="formAnimal.name" name="name" />
+    <label>Species</label>
+    <input [(ngModel)]="formAnimal.species" />
 
-      <label>Species</label>
-      <input type="text" [(ngModel)]="formAnimal.species" name="species" />
+    <label>Gender</label>
+    <select [(ngModel)]="formAnimal.gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
 
-      <!-- Training Status -->
-      <label>Training Status:</label>
-      <select [(ngModel)]="formAnimal.trainingStatus" name="trainingStatus">
-        <option value="Intake">Intake</option>
-        <option value="In Training">In Training</option>
-        <option value="Ready for Service">Ready for Service</option>
-         <option value="In Service">In Service</option>
-      </select>
+    <label>Age</label>
+    <input type="number" [(ngModel)]="formAnimal.age" />
 
-      <label>Reserved</label>
-      <select [(ngModel)]="formAnimal.reserved" name="reserved">
-        <option [value]="true">Yes</option>
-        <option [value]="false">No</option>
-      </select>
+    <label>Weight</label>
+    <input [(ngModel)]="formAnimal.weight" />
 
-       <label> In Service Country</label>
-      <input type="text" [(ngModel)]="formAnimal.inServiceCountry" name="inServiceCountry" />
+    <label>Training Status</label>
+    <select [(ngModel)]="formAnimal.trainingStatus">
+      <option value="Intake">Intake</option>
+      <option value="In Training">In Training</option>
+      <option value="Ready for Service">Ready for Service</option>
+    </select>
 
+    <label>Reserved?</label>
+    <select [(ngModel)]="formAnimal.reserved">
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
+    </select>
 
-      <label>Image</label>
-      <input type="text" [(ngModel)]="formAnimal.image" name="image" />
+    <label>In Service Country</label>
+    <input [(ngModel)]="formAnimal.inServiceCountry" />
 
-      <div class="modal-buttons">
-        <button type="button" (click)="closeModal()">Cancel</button>
-        <button type="submit">Save</button>
-      </div>
+    <label>Image</label>
+    <input [(ngModel)]="formAnimal.image" />
 
-    </form>
-
+    <div class="button-row">
+      <button class="save-btn" (click)="saveChanges()">Save</button>
+      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+    </div>
   </div>
 </div>
