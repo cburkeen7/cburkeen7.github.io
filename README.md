@@ -33,6 +33,8 @@ I was able to meet all the course outcomes I identified for this milestone. I us
 
 Enhancing this artifact taught me how to transition from an object-oriented console application to the foundation for a full-stack application. I gained experience in structuring a real backend using controllers and routes and designing a front end with reusable components. The biggest challenge that I faced in this milestone were restructuring the logic into modular components and ensuring that app still reflected the original program’s functionality. Another challenge was deciding how to separate concerns properly. I also struggled with setting up the project with Express, Angular, Node.js, GitHub, and getting the correct folder hierarchy set-up
 
+### [Link to Ehancement One](https://github.com/cburkeen7/cburkeen7.github.io/tree/enhancement-1)
+
 ## Enhancement Two: Data Structures and Algorithms
 
 The artifact for this milestone is the original Rescue Animal Java console application, originally created for IT 145. The original program used two ArrayLists, one for Dog objects and one for Monkey objects. It also allowed users to add animals, view animals, and sort by reservation status and type. 
@@ -45,6 +47,8 @@ I was able to successfully meet the course outcomes I targeted. I was able to me
 
 The enhancement process required me to re-evaluate the original program from an algorithmic standpoint. By doing this, I learned how to transform repetitive logic into reusable algorithmic components, improve efficiency by reducing redundant loops, use cleaner, more scalable data structures, and apply sorting and filtering patterns used in real-world applications. One of the challenges I faced was ensuring filtering and sorting work correctly for different animal types. 
 
+### [Link to Enhancement Two](https://github.com/cburkeen7/cburkeen7.github.io/tree/enhancement2)
+
 ## Enhancement Three: Databases 
 
 The artifact for this milestone is the original Rescue Animal Java console application, originally created for IT 145. The original program used two ArrayLists, one for Dog objects and one for Monkey objects. It also allowed users to add animals, view animals, and sort by reservation status and type. 
@@ -55,7 +59,7 @@ I was able to successfully meet the course outcomes I targeted. I was able to me
 
 Enhancing this artifact taught me several important lessons. I learned how important it is to structure backend logic cleanly when dealing with asynchronous operations and error handling in Node.js. I also gained experience debugging common issues such as missing routes, invalid request bodies, and database connection problems. One of the main challenges I encountered was restructuring the Angular components by removing all array-based logic I used for the original program and converting them observable HTTP requests to the backend. 
 
-
+### [Link to Enhancement Three](https://github.com/cburkeen7/cburkeen7.github.io/tree/enhancement2)
 
 
 
