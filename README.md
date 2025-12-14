@@ -1,4 +1,4 @@
-theme: jekyll-theme-midnight
+
 
 # CS-499 ePortfolio 
 # Introduction
