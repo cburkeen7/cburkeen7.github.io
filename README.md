@@ -15,7 +15,7 @@ Security principles were another critical area of the program. I learned the imp
 
 My artifact, the Grazioso Salvare Rescue Animal Management System, showcases the full range of my computer science abilities. Each enhancement made to this application demonstrates a different aspect of my technical skill set, including API design, authentication, database integration, and frontend development. The artifact reflects the growth from a simple console-based application to a fully functional web-based system aligned with industry standards and best practices.
 
-The artifact in my ePortfolio demonstrate how my experiences in algorithms, software engineering, databases, web development, and security come together to form complete, real-world computing solutions. The portfolio highlights my technical skills and my ability to integrate those skills into maintainable, scalable, and secure applications. This shows that I am prepared to enter the computer science field and contribute effectively in a professional software development role.
+The artifact demonstrates how my experiences in algorithms, software engineering, databases, web development, and security come together to form complete, real-world computing solutions. The portfolio highlights my technical skills and my ability to integrate those skills into maintainable, scalable, and secure applications. This shows that I am prepared to enter the computer science field and contribute effectively in a professional software development role.
 
 # Original Project and Code Review
 ### [Click Here ](https://github.com/cburkeen7/cburkeen7.github.io/tree/originalArtifact) to see my original Grazioso Salvare Rescue Animal Project
