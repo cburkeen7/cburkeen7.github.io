@@ -3,7 +3,7 @@
 My name is Cole Burkeen. I have been in the SNHU computer science program for 2.5 years. While in the program, three important skills I have learned are how to apply object-oriented programming principles, build and secure full-stack web applications, and how to follow the software development lifecycle using agile practices. 
 
 # Professional Self-Assessment
-Throughout my computer science journey, each course and hands-on project has helped me identify my strengths, refine my professional goals, and gain confidence in my software development skills. Developing my ePortfolio has allowed me to reflect on what I have learned and clearly see how these skills connect to real-world software development. The process of building and refining this portfolio demonstrates my readiness to contribute in professional environments.
+Throughout my computer science journey, each course and hands-on project has helped me identify my strengths, refine my professional goals, and gain confidence in my software development skills. Developing my ePortfolio has allowed me to reflect on what I have learned and see how these skills connect to real-world software development. The process of building and refining this portfolio demonstrates my readiness to contribute in professional environments.
 
 Working in team environments played a significant role in shaping my professional skills. Through the different projects, I learned how to break down complex tasks and communicate progress effectively. These experiences have increased my confidence in following the software development process and communicating requirements. 
 
